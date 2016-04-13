@@ -219,7 +219,8 @@ def mover(origen, destino, dibujar):
          return "ERROR"
          
 
-     if mayor_vacio!=0 and mistorres[origen-1][i_mayor]>mistorres[destino-1][mayor_vacio-1]:
+     if mayor_vacio!=0 and mistorres[origen-1][i_mayor]> \
+        mistorres[destino-1][mayor_vacio-1]:
          return "ERROR"
          
 
@@ -281,7 +282,8 @@ def q_learning():
     dibujar = False
     q_acs = []
 
-    indice_grande = indice_estado_torre(torre1)*16*16*6 + indice_estado_torre(torre2)*16*6 + indice_estado_torre(torre3)*6
+    indice_grande = indice_estado_torre(torre1)*16*16*6 + \
+      indice_estado_torre(torre2)*16*6 + indice_estado_torre(torre3)*6
     for i in range(6):
         q_acs.append(q[indice_grande + i])
 
@@ -302,7 +304,8 @@ def q_learning():
         else:
             r = 100
 
-        sig_indice_grande = indice_estado_torre(torre1)*16*16*6 + indice_estado_torre(torre2)*16*6 + indice_estado_torre(torre3)*6
+        sig_indice_grande = indice_estado_torre(torre1)*16*16*6 + \
+             indice_estado_torre(torre2)*16*6 + indice_estado_torre(torre3)*6
         sig_q_acs = []
         for i in range(6):
             sig_q_acs.append(q[sig_indice_grande + i])
@@ -310,7 +313,8 @@ def q_learning():
         sig_indice_acc = seleccionar_acc(sig_q_acs)
         sig_acc = accion_de_indice(sig_indice_acc)
 
-        q[indice_grande + indice_acc] = r + 0.9*q[sig_indice_grande + sig_indice_acc]
+        q[indice_grande + indice_acc] = r + \
+              0.9*q[sig_indice_grande + sig_indice_acc]
 
         acc = sig_acc
         indice_grande = sig_indice_grande
